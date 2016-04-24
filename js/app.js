@@ -6,24 +6,44 @@ var app = angular.module('MyApp', []);
 app.controller('MainCtrl', function ($scope, $http) {
 	$scope.method = ["GET", "POST", "PUT", "DELETE"];
 	$scope.selectedMethod = "GET";
-	$scope.url = 'http://www.youtube.com/';
+	$scope.url = 'https://www.youtube.com/';
 	$scope.params = [];
 	$scope.addParams = function(){
-		$scope.params.push({
-			'key': $scope.key,
-			'value': $scope.value
-		});
-		$scope.name ='';
-		$scope.value = '';
-	};
+		if ($scope.key && $scope.value){
+			$scope.params.push({
+				'key': $scope.key,
+				'value': $scope.value
+			});
+			$scope.key ='';
+			$scope.value = '';
+			};
+		}
+
 	$scope.fetch = function (){
-		$http({
-			method: $scope.selectedMethod,
-			url: $scope.url
-		}).then(function(response){
-				$scope.data = response.data;
-		  }, function(response){
-		  		$scope.data = response.data;
-		 });
+		if ($scope.params.length) {
+			var config = {
+					params: $scope.params
+				};
+			$http({
+				method: $scope.selectedMethod,
+				url: $scope.url,
+				params: config
+			}).then(function(response){
+					$scope.data = response.data;
+			  }, function(response){
+			  		$scope.data = response.status;
+			 });
+		}
+		else{
+			$http({
+				method: $scope.selectedMethod,
+				url: $scope.url
+			}).then(function(response){
+					$scope.data = response.data;
+			  }, function(response){
+			  		$scope.data = response.status;
+			});
+		}
 	};
+
 });
