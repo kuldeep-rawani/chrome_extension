@@ -1,0 +1,5 @@
+body, section {
+	width: 700px;
+	height: 400px;
+	overflow-x: hidden;
+}
