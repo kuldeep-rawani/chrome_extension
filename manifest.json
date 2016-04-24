@@ -1,0 +1,25 @@
+{
+	"manifest_version": 2,
+
+	"name": "Rest Client for HTTP Requests",
+	"description": "Rest Client to make HTTP Get, Post, Put and Delete requests to a particular URL",
+	"version": "1.0",
+
+	"browser_action": {
+		"default_icon": "icon.png"
+	},
+	"background": {
+		"scripts": ["background.js"]
+	},
+	"icons":{
+		"64": "icon.png"
+	},
+	"permissions": [
+		"tabs",
+		"<all_urls>"
+	],
+	 "content_scripts": [{
+     "js": ["bower_components/jquery/dist/jquery.min.js"],
+     "matches": ["http://*/*", "https://*/*"]
+   }]
+}
