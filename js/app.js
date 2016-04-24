@@ -7,6 +7,15 @@ app.controller('MainCtrl', function ($scope, $http) {
 	$scope.method = ["GET", "POST", "PUT", "DELETE"];
 	$scope.selectedMethod = "GET";
 	$scope.url = 'http://www.youtube.com/';
+	$scope.params = [];
+	$scope.addParams = function(){
+		$scope.params.push({
+			'key': $scope.key,
+			'value': $scope.value
+		});
+		$scope.name ='';
+		$scope.value = '';
+	};
 	$scope.fetch = function (){
 		$http({
 			method: $scope.selectedMethod,

@@ -31,10 +31,27 @@
 			</div>
 			<div class="row">
 				<h4 class="text-center">Parameters</h4><hr>
-				<div class="form-group">
-					<input type="text" placeholder="Key"/> &nbsp;
-					<input type="text" placeholder="value"/>
+				<div class="form-group text-center">
+					<input type="text" placeholder="Key" name="key" ng-model="key" /> &nbsp;
+					<input type="text" placeholder="value" name="value" ng-model="value" /> &nbsp;
+					<button class="btn btn-success" ng-click="addParams()">ADD Params</button>
 				</div>
+			</div>
+			<div class="col-md-offset-2 col-md-8 text-center">
+				<table class="table">
+					<tr>
+						<th class="text-center">Key
+						</th>
+						<th class="text-center">Value
+						</th>
+					</tr>
+					<tr ng-repeat="param in params">
+						<td>{{ param.key }}
+						</td>
+						<td>{{ param.value }}
+						</td>
+					</tr>
+				</table>
 			</div>
 			<textarea class="col-md-8 col-md-offset-2" rows="15" style="resize:none">
 				{{ data }}
