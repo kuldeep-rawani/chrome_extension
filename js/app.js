@@ -31,7 +31,7 @@ app.controller('MainCtrl', function ($scope, $http) {
 			}).then(function(response){
 					$scope.data = response.data;
 			  }, function(response){
-			  		$scope.data = response.status;
+			  		$scope.data = "Invalid request" ;
 			 });
 		}
 		else{
@@ -41,7 +41,7 @@ app.controller('MainCtrl', function ($scope, $http) {
 			}).then(function(response){
 					$scope.data = response.data;
 			  }, function(response){
-			  		$scope.data = response.status;
+			  		$scope.data = "Invalid request" ;
 			});
 		}
 	};
